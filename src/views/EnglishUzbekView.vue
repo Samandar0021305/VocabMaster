@@ -1,32 +1,35 @@
 <template>
   <div class="english-uzbek-view">
+    <span style="color: red">This feature is in test mode.</span>
+
     <h1>English-Uzbek Vocabulary Learning</h1>
-    <p class="subtitle">Learn Uzbek meanings of English words through contextual understanding</p>
-    
+    <p class="subtitle">
+      Learn Uzbek meanings of English words through contextual understanding
+    </p>
+
     <div class="input-section">
       <div class="word-input-container">
-        <input 
-          v-model="customWord" 
+        <input
+          v-model="customWord"
           @keyup.enter="startCustomGame"
           placeholder="Enter an English word..."
           class="word-input"
-        >
-        <button 
-          @click="startCustomGame" 
+        />
+        <button
+          @click="startCustomGame"
           class="btn btn-primary"
           :disabled="!customWord.trim()"
         >
           Start Learning
         </button>
       </div>
-      <p class="hint">Or try one of these words: hello, book, friend, happy, time, work</p>
+      <p class="hint">
+        Or try one of these words: hello, book, friend, happy, time, work
+      </p>
     </div>
 
     <div v-if="gameStarted" class="game-wrapper">
-      <MeaningCardsGame 
-        :words="gameWords"
-        @next="resetGame"
-      />
+      <MeaningCardsGame :words="gameWords" @next="resetGame" />
     </div>
 
     <div v-else class="features">
@@ -50,31 +53,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import MeaningCardsGame from '@/components/games/MeaningCardsGame.vue'
-import type { Word } from '@/types'
+import { ref } from "vue";
+import MeaningCardsGame from "@/components/games/MeaningCardsGame.vue";
+import type { Word } from "@/types";
 
-const customWord = ref('')
-const gameStarted = ref(false)
-const gameWords = ref<Word[]>([])
+const customWord = ref("");
+const gameStarted = ref(false);
+const gameWords = ref<Word[]>([]);
 
 const startCustomGame = () => {
-  if (!customWord.value.trim()) return
-  
-  gameWords.value = [{
-    id: Date.now().toString(),
-    original: customWord.value.trim(),
-    translation: customWord.value.trim().toLowerCase()
-  }]
-  
-  gameStarted.value = true
-}
+  if (!customWord.value.trim()) return;
+
+  gameWords.value = [
+    {
+      id: Date.now().toString(),
+      original: customWord.value.trim(),
+      translation: customWord.value.trim().toLowerCase(),
+    },
+  ];
+
+  gameStarted.value = true;
+};
 
 const resetGame = () => {
-  gameStarted.value = false
-  customWord.value = ''
-  gameWords.value = []
-}
+  gameStarted.value = false;
+  customWord.value = "";
+  gameWords.value = [];
+};
 </script>
 
 <style scoped>
@@ -90,7 +95,7 @@ h1 {
   font-weight: 800;
   margin-bottom: 0.5rem;
   text-align: center;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .subtitle {
@@ -161,9 +166,15 @@ h1 {
   animation-fill-mode: both;
 }
 
-.feature-card:nth-child(1) { animation-delay: 0.1s; }
-.feature-card:nth-child(2) { animation-delay: 0.2s; }
-.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.feature-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.feature-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
 
 .feature-card:hover {
   transform: translateY(-4px);
@@ -200,7 +211,11 @@ h1 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
   color: white;
   box-shadow: var(--shadow-md);
 }
@@ -219,15 +234,15 @@ h1 {
   .word-input-container {
     flex-direction: column;
   }
-  
+
   .word-input {
     width: 100%;
   }
-  
+
   .btn {
     width: 100%;
   }
-  
+
   .input-section {
     padding: 1.5rem;
   }
@@ -237,11 +252,11 @@ h1 {
   h1 {
     font-size: 1.75rem;
   }
-  
+
   .subtitle {
     font-size: 1rem;
   }
-  
+
   .features {
     grid-template-columns: 1fr;
     gap: 1.5rem;

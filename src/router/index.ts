@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import LayerManagement from '@/views/LayerManagement.vue'
 import WordManagement from '@/views/WordManagement.vue'
 import GameSession from '@/views/GameSession.vue'
+import EnglishUzbekView from '@/views/EnglishUzbekView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/game/:layerId',
       name: 'game',
       component: GameSession
+    },
+    {
+      path: '/english-uzbek',
+      name: 'english-uzbek',
+      component: EnglishUzbekView
     }
   ]
 })

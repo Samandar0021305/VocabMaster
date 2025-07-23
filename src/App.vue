@@ -27,6 +27,14 @@
             <span class="nav-icon">📚</span>
             Layers
           </router-link>
+          <router-link
+            to="/english-uzbek"
+            class="nav-link"
+            @click="mobileMenuOpen = false"
+          >
+            <span class="nav-icon">🌐</span>
+            EN-UZ
+          </router-link>
         </div>
       </div>
     </nav>

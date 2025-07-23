@@ -2,6 +2,7 @@ export interface Word {
   id: string
   original: string
   translation: string
+  meaning?: string
 }
 
 export interface Layer {
@@ -18,4 +19,4 @@ export interface GameSession {
   totalQuestions: number
 }
 
-export type GameType = 'matching' | 'multipleChoice' | 'typing' | 'flashcards' | 'trueFalse'
+export type GameType = 'matching' | 'multipleChoice' | 'typing' | 'flashcards' | 'trueFalse' | 'meaningCards'

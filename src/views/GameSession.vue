@@ -14,7 +14,7 @@
       <div class="game-header">
         <h2>{{ layer.name }}</h2>
         <div class="game-stats">
-          <span>Game {{ currentGameIndex + 1 }} of 5</span>
+          <span>Game {{ currentGameIndex + 1 }} of {{ games.length }}</span>
           <span>Score: {{ session?.score || 0 }} / {{ session?.totalQuestions || 0 }}</span>
         </div>
       </div>
@@ -49,6 +49,7 @@ const MultipleChoiceGame = defineAsyncComponent(() => import('@/components/games
 const TypingGame = defineAsyncComponent(() => import('@/components/games/TypingGame.vue'))
 const FlashcardsGame = defineAsyncComponent(() => import('@/components/games/FlashcardsGame.vue'))
 const TrueFalseGame = defineAsyncComponent(() => import('@/components/games/TrueFalseGame.vue'))
+const MeaningCardsGame = defineAsyncComponent(() => import('@/components/games/MeaningCardsGame.vue'))
 
 const route = useRoute()
 const router = useRouter()
@@ -58,7 +59,7 @@ const layerId = computed(() => route.params.layerId as string)
 const layer = computed(() => store.getLayerById(layerId.value))
 const session = computed(() => store.currentSession)
 
-const games = [MatchingGame, MultipleChoiceGame, TypingGame, FlashcardsGame, TrueFalseGame]
+const games = [MeaningCardsGame, MatchingGame, MultipleChoiceGame, TypingGame, FlashcardsGame, TrueFalseGame]
 
 const currentGameIndex = computed(() => session.value?.currentGameIndex || 0)
 const currentGameComponent = computed(() => games[currentGameIndex.value] || null)

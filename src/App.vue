@@ -6,7 +6,10 @@
           <span class="brand-icon">🎯</span>
           <span class="brand-text">VocabMaster</span>
         </router-link>
-        <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen">
+        <button
+          class="mobile-menu-btn"
+          @click="mobileMenuOpen = !mobileMenuOpen"
+        >
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
@@ -16,7 +19,11 @@
             <span class="nav-icon">🏠</span>
             Home
           </router-link>
-          <router-link to="/layers" class="nav-link" @click="mobileMenuOpen = false">
+          <router-link
+            to="/layers"
+            class="nav-link"
+            @click="mobileMenuOpen = false"
+          >
             <span class="nav-icon">📚</span>
             Layers
           </router-link>
@@ -28,13 +35,16 @@
         <router-view />
       </transition>
     </main>
+    <footer class="footer">
+      <p>© Samandar</p>
+    </footer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const mobileMenuOpen = ref(false)
+const mobileMenuOpen = ref(false);
 </script>
 
 <style scoped>
@@ -84,12 +94,16 @@ const mobileMenuOpen = ref(false)
 }
 
 .brand-text {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .mobile-menu-btn {
@@ -157,11 +171,11 @@ const mobileMenuOpen = ref(false)
   .nav-container {
     padding: 1rem;
   }
-  
+
   .mobile-menu-btn {
     display: flex;
   }
-  
+
   .nav-links {
     position: absolute;
     top: 100%;
@@ -178,18 +192,18 @@ const mobileMenuOpen = ref(false)
     pointer-events: none;
     transition: all 0.3s;
   }
-  
+
   .nav-links.mobile-open {
     transform: translateY(0);
     opacity: 1;
     pointer-events: all;
   }
-  
+
   .nav-link {
     width: 100%;
     justify-content: center;
   }
-  
+
   .main-content {
     padding: 1rem;
   }
@@ -199,9 +213,36 @@ const mobileMenuOpen = ref(false)
   .brand-text {
     font-size: 1.25rem;
   }
-  
+
   .brand-icon {
     font-size: 1.5rem;
+  }
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-top: auto;
+  animation: slideIn 0.3s ease-out;
+}
+
+.footer p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1rem;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
   }
 }
 </style>
